@@ -3,7 +3,7 @@
     var defaults = {
         name: 'div',
         html: '',
-        args: {},
+        attribs: {},
     }, i, el;
     createElement = (options)=>{
         for(i in defaults){
@@ -11,8 +11,8 @@
         }
         el = document.createElement(options.name);
         el.innerHTML = options.html;
-        for(i in options.args){
-            el.setAttribute(i, options.args[i]);
+        for(i in options.attribs){
+            el.setAttribute(i, options.attribs[i]);
         }
         return el;
     }
