@@ -6,8 +6,13 @@
         };
     throwEvent = (event)=>{
         if(eventsStorage[event]) eventsStorage[event].forEach((f)=>{
-            f();
+            try{
+                f();
+            } catch(e){
+                console.error('Uncaught ' + e.stack);
+            }
         });
+        eventsStorage[event] = [];
     };
     on = (event, callback)=>{
         if(isFunction(callback)){
