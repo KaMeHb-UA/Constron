@@ -55,9 +55,27 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 function throwEvent(event){
-    mainWindow.webContents.executeJavaScript('throwEvent(' + JSON.stringify(event.toString()) + ')');
+    try{
+        win.webContents.executeJavaScript('throwEvent(' + JSON.stringify(event.toString()) + ')');
+    } catch(e){
+        setTimeout(()=>{
+            throwEvent(event);
+        }, 10);
+    }
 }
 
 function on(event, callback){
-    if(callback && callback.constructor && callback.call && callback.apply) mainWindow.webContents.executeJavaScript('on(' + JSON.stringify(event.toString()) + ',' + callback.toString() + ')');
+    try{
+        if(callback && callback.constructor && callback.call && callback.apply) win.webContents.executeJavaScript('on(' + JSON.stringify(event.toString()) + ',' + callback.toString() + ')');
+    } catch(e){
+        setTimeout(()=>{
+            on(event, callback);
+        }, 10);
+    }
 }
+
+on('loaded', ()=>{
+    alert('Hello from init.js');
+});
+
+throwEvent('loaded');

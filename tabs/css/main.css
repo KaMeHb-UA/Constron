@@ -1,0 +1,28 @@
+﻿html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+}
+#left-menu{
+    width: var(--left-menu-width);
+    height: 100%;
+    background: bisque;
+}
+#top-menu{
+    position: absolute;
+    width: calc(100% - var(--left-menu-width));
+    height: var(--top-menu-height);
+    background: aquamarine;
+    top: 0;
+    left: var(--left-menu-width);
+}
+#content-wrapper{
+    position: absolute;
+    width: calc(100% - var(--left-menu-width));
+    height: calc(100% - var(--top-menu-height));
+    background: #ae8fbc;
+    top: var(--top-menu-height);
+    left: var(--left-menu-width);
+}
