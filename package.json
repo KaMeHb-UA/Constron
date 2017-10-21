@@ -1,5 +1,8 @@
 ﻿{
     "name"    : "constron",
     "version" : "0.0.1-a",
-    "main"    : "init.js"
+    "main"    : "init.js",
+    "dependencies": {
+        "electron" : "^1.7.9"
+    }
 }
